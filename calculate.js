@@ -1,4 +1,6 @@
 function calculate() {
+	var grades = [];
+	var coefs = [];
 	var m1 = parseFloat(document.getElementsByClassName("m1")[0].value);
 	var m2 = parseFloat(document.getElementsByClassName("m2")[0].value);
 	var m3 = parseFloat(document.getElementsByClassName("m3")[0].value);
@@ -8,6 +10,11 @@ function calculate() {
 	var mathcoef = m1c+m2c+m3c;
 	var mathgrade = (m1*m1c+m2*m2c+m3*m3c)/(m1c+m2c+m3c);
 	document.getElementById("mathanswer").innerHTML = mathgrade;  
+	grades.push(m1*m1c);
+	grades.push(m2*m2c);
+	grades.push(m3*m3c);
+	coefs.push(m1c, m2c, m3c);
+
 
 	var w1 = parseFloat(document.getElementsByClassName("w1")[0].value);
 	var w2 = parseFloat(document.getElementsByClassName("w2")[0].value);
@@ -15,7 +22,10 @@ function calculate() {
 	var w2c = parseFloat(document.getElementsByClassName("w2c")[0].value);
 	var wavescoef = w1c + w2c;
 	var wavesgrade = (w1*w1c+w2*w2c)/(w1c+w2c);
-	document.getElementById("wavesanswer").innerHTML = wavesgrade;  
+	document.getElementById("wavesanswer").innerHTML = wavesgrade; 
+	grades.push(w1*w1c);
+	grades.push(w2*w2c);
+	coefs.push(w1c, w2c);
 
 	var mg1 = parseFloat(document.getElementsByClassName("mg1")[0].value);
 	var mg2 = parseFloat(document.getElementsByClassName("mg2")[0].value);
@@ -23,7 +33,10 @@ function calculate() {
 	var mg2c = parseFloat(document.getElementsByClassName("mg2c")[0].value);
 	var managcoef = mg1c+mg2c;
 	var managgrade = (mg1*mg1c+mg2*mg2c)/(mg1c+mg2c);
-	document.getElementById("managanswer").innerHTML = managgrade;  
+	document.getElementById("managanswer").innerHTML = managgrade; 
+	grades.push(mg1*mg1c);
+	grades.push(mg2*mg2c);
+	coefs.push(m1c, m2c);
 
 	var cst1 = parseFloat(document.getElementsByClassName("cst1")[0].value);
 	var cst2 = parseFloat(document.getElementsByClassName("cst2")[0].value);
@@ -31,7 +44,10 @@ function calculate() {
 	var cst2c = parseFloat(document.getElementsByClassName("cst2c")[0].value);
 	var cstcoef = cst1c + cst2c;
 	var constgrade = (cst1*cst1c+cst2*cst2c)/(cst1c+cst2c);
-	document.getElementById("constanswer").innerHTML = constgrade;  
+	document.getElementById("constanswer").innerHTML = constgrade; 
+	grades.push(cst1*cst1c);
+	grades.push(cst2*cst2c);
+	coefs.push(cst1c, cst2c);	
 
 	var web1 = parseFloat(document.getElementsByClassName("web1")[0].value);
 	var web2 = parseFloat(document.getElementsByClassName("web2")[0].value);
@@ -41,7 +57,9 @@ function calculate() {
 	var web3c = parseFloat(document.getElementsByClassName("web3c")[0].value);
 	var webgrade = (web1*web1c+web2*web2c+web3*web3c)/(web1c+web2c+web3c);
 	var webcoef = web1c + web2c+ web3c;
-	document.getElementById("webanswer").innerHTML = webgrade;  
+	document.getElementById("webanswer").innerHTML = webgrade;
+	grades.push(web1*web1c, web2*web2c, web3*web3c);
+	coefs.push(web1c, web2c, web3c);
 
 
 	var th1 = parseFloat(document.getElementsByClassName("th1")[0].value);
@@ -50,7 +68,9 @@ function calculate() {
 	var th2c = parseFloat(document.getElementsByClassName("th2c")[0].value);
 	var thermocoef = th1c + th2c;
 	var thermograde = (th1*th1c+th2*th2c)/(th1c+th2c);
-	document.getElementById("thermoanswer").innerHTML = thermograde;  
+	document.getElementById("thermoanswer").innerHTML = thermograde; 
+	grades.push(th1*th1c, th2*th2c);
+	coefs.push(th1c, th2c);
 
 	var cr1 = parseFloat(document.getElementsByClassName("cr1")[0].value);
 	var cr2 = parseFloat(document.getElementsByClassName("cr2")[0].value);
@@ -59,6 +79,8 @@ function calculate() {
 	var creativitycoef = cr1c + cr2c;
 	var creativitygrade = (cr1*cr1c+cr2*cr2c)/(cr1c+cr2c);
 	document.getElementById("creativityanswer").innerHTML = creativitygrade;  
+	grades.push(cr1*cr1c, cr2*cr2c);
+	coefs.push(cr1c, cr2c);
 	
 	var chemcoef = thermocoef + creativitycoef;
 	var chemgrade = (creativitygrade * ( cr1c + cr2c) + thermograde * (th1c + th2c ) ) / (cr1c + cr2c + th1c + th2c);
@@ -73,12 +95,16 @@ function calculate() {
 	var frcoef = fr1c + fr2c + fr3c;
 	var frgrade = (fr1*fr1c+fr2*fr2c+fr3*fr3c)/(fr1c+fr2c+fr3c);
 	document.getElementById("franswer").innerHTML = frgrade;  
+	grades.push(fr1*fr1c, fr2*fr2c, fr3*fr3c);
+	coefs.push(fr1c, fr2c, fr3c);
 
 	var d1 = parseFloat(document.getElementsByClassName("d1")[0].value);
 	var d1c = parseFloat(document.getElementsByClassName("d1c")[0].value);
 	var distcoef = d1c;
 	var distgrade = (d1*d1c)/(d1c);
-	document.getElementById("distanswer").innerHTML = distgrade;  
+	document.getElementById("distanswer").innerHTML = distgrade; 
+	grades.push(d1*d1c);
+	coefs.push(d1c);
 
 	var oos1 = parseFloat(document.getElementsByClassName("oos1")[0].value);
 	var oos2 = parseFloat(document.getElementsByClassName("oos2")[0].value);
@@ -87,12 +113,22 @@ function calculate() {
 	var ooscoef = oos1c + oos2c;
 	var oosgrade = (oos1*oos1c+oos2*oos2c)/(oos1c+oos2c);
 	document.getElementById("oosanswer").innerHTML = oosgrade;  
+	grades.push(oos1*oos1c, oos2*oos2c);
+	coefs.push(oos1c, oos2c)
  	
 	var chemengcoef = ooscoef + distcoef;
  	var chemenggrade = (oosgrade * ( oos1c + oos2c) + distgrade * (d1c ) ) / (oos1c + oos2c + d1c); 
 	document.getElementById("chemenganswer").innerHTML = (oosgrade * ( oos1c + oos2c) + distgrade * (d1c ) ) / (oos1c + oos2c + d1c); 
 
 	document.getElementById("total").innerHTML = (mathgrade*mathcoef + wavesgrade*wavescoef + webgrade*webcoef + chemenggrade*chemengcoef + frgrade*frcoef + chemgrade*chemcoef + constgrade*cstcoef + managgrade*managcoef)/(managcoef + mathcoef + webcoef + wavescoef + chemcoef + chemengcoef + cstcoef + frcoef);
-
-	console.log(managcoef + mathcoef + webcoef + wavescoef + chemcoef + chemengcoef + cstcoef + frcoef);
+	var possible_total = 0;
+	for (i=0; i < grades.length; i++) {
+		if ( grades[i] != 0 ) {
+			grades[i] = 20 * coefs[i];
+		}
+		possible_total += grades[i];
+	}
+	var maybe = ((mathgrade*mathcoef + wavesgrade*wavescoef + webgrade*webcoef + chemenggrade*chemengcoef + frgrade*frcoef + chemgrade*chemcoef + constgrade*cstcoef + managgrade*managcoef)/(managcoef + mathcoef + webcoef + wavescoef + chemcoef + chemengcoef + cstcoef + frcoef))*20/ (possible_total/(managcoef + mathcoef + webcoef + wavescoef + chemcoef + chemengcoef + cstcoef + frcoef));
+	document.getElementById("total_maybe").innerHTML = maybe;
+	document.getElementById("possible_total").innerHTML =  possible_total/(managcoef + mathcoef + webcoef + wavescoef + chemcoef + chemengcoef + cstcoef + frcoef);
 }
